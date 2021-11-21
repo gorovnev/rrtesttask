@@ -38,7 +38,7 @@ dependencies:
   dartz: ^0.10.0
   get_it: ^7.2.0
   freezed_annotation: ^1.0.0
-  flutter_typeahead: ^3.2.1
+  flutter_aad_oauth: ^2.1.2
 
 dev_dependencies:
   flutter_test:

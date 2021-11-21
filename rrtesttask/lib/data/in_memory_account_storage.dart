@@ -140,23 +140,34 @@ class InMemoryAccountStorage implements IAccountRepository {
       'Martin',
     ];
 
-    const limit = 50;
+    const limit = 100;
     final rng = Random();
     final stateList = states.keys.toList();
-    for (var i = 0; i < 50; i++) {
+    var inactive = true;
+    for (var i = 0; i < limit; i++) {
       final id = rng.nextInt(20);
       final name = names[id] + " " + surnames[id];
       final stateId = rng.nextInt(stateList.length);
+      inactive = !inactive;
       final account = Account(
         imageUrl: imageUrl,
         name: name,
+        isInative: inactive,
         accountNumber: i.toString(),
-        stateCode: stateList[stateId],
         stateOrProvince: states[stateList[stateId]]!,
       );
       _accounts[account.accountNumber] = account;
     }
 
-    var a = 0;
+    // makeCsv();
+  }
+
+  void makeCsv() {
+    print("ID,Name,Status,StateOrProvice,ImageURL");
+    for (var item in _accounts.values) {
+      final inactive = item.isInative ? 1 : 0;
+      print(
+          "${item.accountNumber},${item.name},${inactive.toString()},${item.stateOrProvince},${item.imageUrl}");
+    }
   }
 }

@@ -21,13 +21,13 @@ class _$AccountTearOff {
       {required String imageUrl,
       required String name,
       required String accountNumber,
-      required String stateCode,
+      required bool isInative,
       required String stateOrProvince}) {
     return _Account(
       imageUrl: imageUrl,
       name: name,
       accountNumber: accountNumber,
-      stateCode: stateCode,
+      isInative: isInative,
       stateOrProvince: stateOrProvince,
     );
   }
@@ -41,7 +41,7 @@ mixin _$Account {
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get accountNumber => throw _privateConstructorUsedError;
-  String get stateCode => throw _privateConstructorUsedError;
+  bool get isInative => throw _privateConstructorUsedError;
   String get stateOrProvince => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -56,7 +56,7 @@ abstract class $AccountCopyWith<$Res> {
       {String imageUrl,
       String name,
       String accountNumber,
-      String stateCode,
+      bool isInative,
       String stateOrProvince});
 }
 
@@ -73,7 +73,7 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? accountNumber = freezed,
-    Object? stateCode = freezed,
+    Object? isInative = freezed,
     Object? stateOrProvince = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,10 +89,10 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      stateCode: stateCode == freezed
-          ? _value.stateCode
-          : stateCode // ignore: cast_nullable_to_non_nullable
-              as String,
+      isInative: isInative == freezed
+          ? _value.isInative
+          : isInative // ignore: cast_nullable_to_non_nullable
+              as bool,
       stateOrProvince: stateOrProvince == freezed
           ? _value.stateOrProvince
           : stateOrProvince // ignore: cast_nullable_to_non_nullable
@@ -110,7 +110,7 @@ abstract class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       {String imageUrl,
       String name,
       String accountNumber,
-      String stateCode,
+      bool isInative,
       String stateOrProvince});
 }
 
@@ -128,7 +128,7 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? accountNumber = freezed,
-    Object? stateCode = freezed,
+    Object? isInative = freezed,
     Object? stateOrProvince = freezed,
   }) {
     return _then(_Account(
@@ -144,10 +144,10 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      stateCode: stateCode == freezed
-          ? _value.stateCode
-          : stateCode // ignore: cast_nullable_to_non_nullable
-              as String,
+      isInative: isInative == freezed
+          ? _value.isInative
+          : isInative // ignore: cast_nullable_to_non_nullable
+              as bool,
       stateOrProvince: stateOrProvince == freezed
           ? _value.stateOrProvince
           : stateOrProvince // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ class _$_Account implements _Account {
       {required this.imageUrl,
       required this.name,
       required this.accountNumber,
-      required this.stateCode,
+      required this.isInative,
       required this.stateOrProvince});
 
   @override
@@ -173,13 +173,13 @@ class _$_Account implements _Account {
   @override
   final String accountNumber;
   @override
-  final String stateCode;
+  final bool isInative;
   @override
   final String stateOrProvince;
 
   @override
   String toString() {
-    return 'Account(imageUrl: $imageUrl, name: $name, accountNumber: $accountNumber, stateCode: $stateCode, stateOrProvince: $stateOrProvince)';
+    return 'Account(imageUrl: $imageUrl, name: $name, accountNumber: $accountNumber, isInative: $isInative, stateOrProvince: $stateOrProvince)';
   }
 
   @override
@@ -192,15 +192,15 @@ class _$_Account implements _Account {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.accountNumber, accountNumber) ||
                 other.accountNumber == accountNumber) &&
-            (identical(other.stateCode, stateCode) ||
-                other.stateCode == stateCode) &&
+            (identical(other.isInative, isInative) ||
+                other.isInative == isInative) &&
             (identical(other.stateOrProvince, stateOrProvince) ||
                 other.stateOrProvince == stateOrProvince));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, imageUrl, name, accountNumber, stateCode, stateOrProvince);
+      runtimeType, imageUrl, name, accountNumber, isInative, stateOrProvince);
 
   @JsonKey(ignore: true)
   @override
@@ -213,7 +213,7 @@ abstract class _Account implements Account {
       {required String imageUrl,
       required String name,
       required String accountNumber,
-      required String stateCode,
+      required bool isInative,
       required String stateOrProvince}) = _$_Account;
 
   @override
@@ -223,7 +223,7 @@ abstract class _Account implements Account {
   @override
   String get accountNumber;
   @override
-  String get stateCode;
+  bool get isInative;
   @override
   String get stateOrProvince;
   @override

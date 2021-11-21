@@ -3,6 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rrtesttask/blocs/home/home_bloc.dart';
 import 'package:rrtesttask/domain/account.dart';
 import 'package:rrtesttask/injection_container.dart';
+import 'package:rrtesttask/domain/data_failure.dart';
+
+import 'package:flutter_aad_oauth/flutter_aad_oauth.dart';
+import 'package:flutter_aad_oauth/model/config.dart';
+import 'package:keyboard_actions/external/platform_check/platform_check.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -53,6 +58,85 @@ class ControlWidget extends StatefulWidget {
 class _ControlWidgetState extends State<ControlWidget> {
   final TextEditingController _searchController = TextEditingController();
   bool showFilter = false;
+  bool? accountStatus;
+  static const String TENANT_ID = "eba4ddbc-19d5-47ec-bf7b-916bf792ad71";
+  static const String CLIENT_ID = "5e2f14a3-0f4e-40e6-b621-086c764565e9";
+
+  late Config config;
+  late FlutterAadOauth oauth = FlutterAadOauth(config);
+
+  @override
+  initState() {
+    var redirectUri;
+    late String scope;
+    late String responseType;
+
+    if (PlatformCheck.isWeb) {
+      scope = "openid profile email offline_access user.read";
+      responseType = "id_token+token";
+      final currentUri = Uri.base;
+      redirectUri = Uri(
+        host: currentUri.host,
+        scheme: currentUri.scheme,
+        port: currentUri.port,
+        path: '/authRedirect.html',
+      );
+    } else {
+      scope = "openid profile offline_access";
+      responseType = "code";
+      redirectUri = "https://login.live.com/oauth20_desktop.srf";
+    }
+
+    config = Config(
+        azureTennantId: TENANT_ID,
+        clientId: CLIENT_ID,
+        scope: scope,
+        redirectUri: "$redirectUri",
+        responseType: responseType);
+
+    oauth = FlutterAadOauth(config);
+    oauth.setContext(context);
+    checkIsLogged();
+    super.initState();
+  }
+
+  void showError(dynamic ex) {
+    showMessage(ex.toString());
+  }
+
+  void showMessage(String text) {
+    var alert = AlertDialog(content: Text(text), actions: <Widget>[
+      ElevatedButton(
+          child: const Text("Ok"),
+          onPressed: () {
+            Navigator.pop(context);
+          })
+    ]);
+    showDialog(context: context, builder: (BuildContext context) => alert);
+  }
+
+  void checkIsLogged() async {
+    if (await oauth.tokenIsValid()) {
+      String? accessToken = await oauth.getAccessToken();
+      showMessage("Access token: $accessToken");
+    }
+  }
+
+  void login() async {
+    try {
+      await oauth.login();
+      String? accessToken = await oauth.getAccessToken();
+      showMessage("Logged in successfully, your access token: $accessToken");
+      print("Logged in successfully, your access token:\n$accessToken");
+    } catch (e) {
+      showError(e);
+    }
+  }
+
+  void logout() async {
+    await oauth.logout();
+    showMessage("Logged out");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +146,29 @@ class _ControlWidgetState extends State<ControlWidget> {
           children: [
             Row(
               children: [
+                ElevatedButton(
+                  onPressed: () {
+                    login();
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(Icons.launch),
+                      Text('Login'),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    logout();
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(Icons.delete),
+                      Text('Logout'),
+                    ],
+                  ),
+                ),
+                //
                 Expanded(
                   child: TextFormField(
                     decoration: InputDecoration(
@@ -124,25 +231,32 @@ class _ControlWidgetState extends State<ControlWidget> {
                 ? Row(
                     children: [
                       const SizedBox(width: 10),
-                      const Text("State:"),
+                      const Text("Account status:"),
                       const SizedBox(width: 10),
-                      DropdownButton<String>(
-                        value: state.filterState,
-                        onChanged: (String? value) {
-                          if (value == null) return;
+                      DropdownButton<bool?>(
+                        value: state.filter?.active,
+                        onChanged: (bool? value) {
                           BlocProvider.of<HomeBloc>(context)
-                              .add(HomeEvent.filterByState(value));
+                              .add(HomeEvent.filterByStatus(value));
                         },
-                        items: state.statesForFilter
-                            .map((e) => DropdownMenuItem(
-                                  child: Text(e),
-                                  value: e,
-                                ))
-                            .toList(),
+                        items: const [
+                          DropdownMenuItem(
+                            child: Text("All"),
+                            value: null,
+                          ),
+                          DropdownMenuItem(
+                            child: Text("Active"),
+                            value: false,
+                          ),
+                          DropdownMenuItem(
+                            child: Text("Inactive"),
+                            value: true,
+                          ),
+                        ],
                       ),
                       const SizedBox(width: 30),
-                      DropdownButton<String>(
-                        value: state.filterStateOrProvince,
+                      DropdownButton<String?>(
+                        value: state.filter?.stateOrProvince,
                         onChanged: (String? value) {
                           if (value == null) return;
                           BlocProvider.of<HomeBloc>(context).add(
@@ -188,7 +302,7 @@ class AccountsWidget extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return state.filteredResult.fold(
-          (l) => const Text("An error"),
+          (err) => Text(err.getMessage()),
           (list) {
             return state.listView
                 ? AccountListWidget(accounts: list)
@@ -233,7 +347,9 @@ class AccountCard extends StatelessWidget {
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 5),
-                Text("State:${account.stateCode} - ${account.stateOrProvince}"),
+                Text("State or Province:${account.stateOrProvince}"),
+                Text(
+                    "Account status:${account.isInative ? "Inactive" : "Active"}"),
                 Text("Account number:${account.accountNumber}"),
               ],
             ),

@@ -39,9 +39,9 @@ class _$HomeEventTearOff {
     );
   }
 
-  FilterByState filterByState(String state) {
-    return FilterByState(
-      state,
+  FilterByStatus filterByStatus(bool? active) {
+    return FilterByStatus(
+      active,
     );
   }
 
@@ -67,7 +67,7 @@ mixin _$HomeEvent {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) =>
@@ -78,7 +78,7 @@ mixin _$HomeEvent {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) =>
@@ -89,7 +89,7 @@ mixin _$HomeEvent {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
@@ -101,7 +101,7 @@ mixin _$HomeEvent {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
@@ -113,7 +113,7 @@ mixin _$HomeEvent {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) =>
@@ -124,7 +124,7 @@ mixin _$HomeEvent {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
@@ -191,7 +191,7 @@ class _$StartedEvent implements StartedEvent {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) {
@@ -205,7 +205,7 @@ class _$StartedEvent implements StartedEvent {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) {
@@ -219,7 +219,7 @@ class _$StartedEvent implements StartedEvent {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
@@ -237,7 +237,7 @@ class _$StartedEvent implements StartedEvent {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
@@ -252,7 +252,7 @@ class _$StartedEvent implements StartedEvent {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) {
@@ -266,7 +266,7 @@ class _$StartedEvent implements StartedEvent {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
@@ -350,7 +350,7 @@ class _$SearchEvent implements SearchEvent {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) {
@@ -364,7 +364,7 @@ class _$SearchEvent implements SearchEvent {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) {
@@ -378,7 +378,7 @@ class _$SearchEvent implements SearchEvent {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
@@ -396,7 +396,7 @@ class _$SearchEvent implements SearchEvent {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
@@ -411,7 +411,7 @@ class _$SearchEvent implements SearchEvent {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) {
@@ -425,7 +425,7 @@ class _$SearchEvent implements SearchEvent {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
@@ -514,7 +514,7 @@ class _$SearchInLoaded implements SearchInLoaded {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) {
@@ -528,7 +528,7 @@ class _$SearchInLoaded implements SearchInLoaded {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) {
@@ -542,7 +542,7 @@ class _$SearchInLoaded implements SearchInLoaded {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
@@ -560,7 +560,7 @@ class _$SearchInLoaded implements SearchInLoaded {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
@@ -575,7 +575,7 @@ class _$SearchInLoaded implements SearchInLoaded {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) {
@@ -589,7 +589,7 @@ class _$SearchInLoaded implements SearchInLoaded {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
@@ -676,7 +676,7 @@ class _$SwitchView implements SwitchView {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) {
@@ -690,7 +690,7 @@ class _$SwitchView implements SwitchView {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) {
@@ -704,7 +704,7 @@ class _$SwitchView implements SwitchView {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
@@ -722,7 +722,7 @@ class _$SwitchView implements SwitchView {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
@@ -737,7 +737,7 @@ class _$SwitchView implements SwitchView {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) {
@@ -751,7 +751,7 @@ class _$SwitchView implements SwitchView {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
@@ -773,64 +773,64 @@ abstract class SwitchView implements HomeEvent {
 }
 
 /// @nodoc
-abstract class $FilterByStateCopyWith<$Res> {
-  factory $FilterByStateCopyWith(
-          FilterByState value, $Res Function(FilterByState) then) =
-      _$FilterByStateCopyWithImpl<$Res>;
-  $Res call({String state});
+abstract class $FilterByStatusCopyWith<$Res> {
+  factory $FilterByStatusCopyWith(
+          FilterByStatus value, $Res Function(FilterByStatus) then) =
+      _$FilterByStatusCopyWithImpl<$Res>;
+  $Res call({bool? active});
 }
 
 /// @nodoc
-class _$FilterByStateCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
-    implements $FilterByStateCopyWith<$Res> {
-  _$FilterByStateCopyWithImpl(
-      FilterByState _value, $Res Function(FilterByState) _then)
-      : super(_value, (v) => _then(v as FilterByState));
+class _$FilterByStatusCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements $FilterByStatusCopyWith<$Res> {
+  _$FilterByStatusCopyWithImpl(
+      FilterByStatus _value, $Res Function(FilterByStatus) _then)
+      : super(_value, (v) => _then(v as FilterByStatus));
 
   @override
-  FilterByState get _value => super._value as FilterByState;
+  FilterByStatus get _value => super._value as FilterByStatus;
 
   @override
   $Res call({
-    Object? state = freezed,
+    Object? active = freezed,
   }) {
-    return _then(FilterByState(
-      state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(FilterByStatus(
+      active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$FilterByState implements FilterByState {
-  const _$FilterByState(this.state);
+class _$FilterByStatus implements FilterByStatus {
+  const _$FilterByStatus(this.active);
 
   @override
-  final String state;
+  final bool? active;
 
   @override
   String toString() {
-    return 'HomeEvent.filterByState(state: $state)';
+    return 'HomeEvent.filterByStatus(active: $active)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FilterByState &&
-            (identical(other.state, state) || other.state == state));
+            other is FilterByStatus &&
+            (identical(other.active, active) || other.active == active));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, state);
+  int get hashCode => Object.hash(runtimeType, active);
 
   @JsonKey(ignore: true)
   @override
-  $FilterByStateCopyWith<FilterByState> get copyWith =>
-      _$FilterByStateCopyWithImpl<FilterByState>(this, _$identity);
+  $FilterByStatusCopyWith<FilterByStatus> get copyWith =>
+      _$FilterByStatusCopyWithImpl<FilterByStatus>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -839,11 +839,11 @@ class _$FilterByState implements FilterByState {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) {
-    return filterByState(state);
+    return filterByStatus(active);
   }
 
   @override
@@ -853,11 +853,11 @@ class _$FilterByState implements FilterByState {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) {
-    return filterByState?.call(state);
+    return filterByStatus?.call(active);
   }
 
   @override
@@ -867,13 +867,13 @@ class _$FilterByState implements FilterByState {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
-    if (filterByState != null) {
-      return filterByState(state);
+    if (filterByStatus != null) {
+      return filterByStatus(active);
     }
     return orElse();
   }
@@ -885,12 +885,12 @@ class _$FilterByState implements FilterByState {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
   }) {
-    return filterByState(this);
+    return filterByStatus(this);
   }
 
   @override
@@ -900,11 +900,11 @@ class _$FilterByState implements FilterByState {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) {
-    return filterByState?.call(this);
+    return filterByStatus?.call(this);
   }
 
   @override
@@ -914,24 +914,24 @@ class _$FilterByState implements FilterByState {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
-    if (filterByState != null) {
-      return filterByState(this);
+    if (filterByStatus != null) {
+      return filterByStatus(this);
     }
     return orElse();
   }
 }
 
-abstract class FilterByState implements HomeEvent {
-  const factory FilterByState(String state) = _$FilterByState;
+abstract class FilterByStatus implements HomeEvent {
+  const factory FilterByStatus(bool? active) = _$FilterByStatus;
 
-  String get state;
+  bool? get active;
   @JsonKey(ignore: true)
-  $FilterByStateCopyWith<FilterByState> get copyWith =>
+  $FilterByStatusCopyWith<FilterByStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1005,7 +1005,7 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) {
@@ -1019,7 +1019,7 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) {
@@ -1033,7 +1033,7 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
@@ -1051,7 +1051,7 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
@@ -1066,7 +1066,7 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) {
@@ -1080,7 +1080,7 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
@@ -1146,7 +1146,7 @@ class _$ClearFilter implements ClearFilter {
     required TResult Function(String accountOrName) search,
     required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
-    required TResult Function(String state) filterByState,
+    required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
   }) {
@@ -1160,7 +1160,7 @@ class _$ClearFilter implements ClearFilter {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
   }) {
@@ -1174,7 +1174,7 @@ class _$ClearFilter implements ClearFilter {
     TResult Function(String accountOrName)? search,
     TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
-    TResult Function(String state)? filterByState,
+    TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
     required TResult orElse(),
@@ -1192,7 +1192,7 @@ class _$ClearFilter implements ClearFilter {
     required TResult Function(SearchEvent value) search,
     required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByState value) filterByState,
+    required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
@@ -1207,7 +1207,7 @@ class _$ClearFilter implements ClearFilter {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
   }) {
@@ -1221,7 +1221,7 @@ class _$ClearFilter implements ClearFilter {
     TResult Function(SearchEvent value)? search,
     TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByState value)? filterByState,
+    TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
     required TResult orElse(),
@@ -1246,9 +1246,7 @@ class _$HomeStateTearOff {
       required bool filtered,
       required bool listView,
       required String nameOrAccount,
-      required String? filterState,
-      required String? filterStateOrProvince,
-      required List<String> statesForFilter,
+      required AccountFilter? filter,
       required List<String> statesOrProcincesForFilter,
       required Either<DataFailure, List<Account>> accountResult,
       required Either<DataFailure, List<Account>> filteredResult}) {
@@ -1257,9 +1255,7 @@ class _$HomeStateTearOff {
       filtered: filtered,
       listView: listView,
       nameOrAccount: nameOrAccount,
-      filterState: filterState,
-      filterStateOrProvince: filterStateOrProvince,
-      statesForFilter: statesForFilter,
+      filter: filter,
       statesOrProcincesForFilter: statesOrProcincesForFilter,
       accountResult: accountResult,
       filteredResult: filteredResult,
@@ -1276,9 +1272,7 @@ mixin _$HomeState {
   bool get filtered => throw _privateConstructorUsedError;
   bool get listView => throw _privateConstructorUsedError;
   String get nameOrAccount => throw _privateConstructorUsedError;
-  String? get filterState => throw _privateConstructorUsedError;
-  String? get filterStateOrProvince => throw _privateConstructorUsedError;
-  List<String> get statesForFilter => throw _privateConstructorUsedError;
+  AccountFilter? get filter => throw _privateConstructorUsedError;
   List<String> get statesOrProcincesForFilter =>
       throw _privateConstructorUsedError;
   Either<DataFailure, List<Account>> get accountResult =>
@@ -1300,9 +1294,7 @@ abstract class $HomeStateCopyWith<$Res> {
       bool filtered,
       bool listView,
       String nameOrAccount,
-      String? filterState,
-      String? filterStateOrProvince,
-      List<String> statesForFilter,
+      AccountFilter? filter,
       List<String> statesOrProcincesForFilter,
       Either<DataFailure, List<Account>> accountResult,
       Either<DataFailure, List<Account>> filteredResult});
@@ -1322,9 +1314,7 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
     Object? filtered = freezed,
     Object? listView = freezed,
     Object? nameOrAccount = freezed,
-    Object? filterState = freezed,
-    Object? filterStateOrProvince = freezed,
-    Object? statesForFilter = freezed,
+    Object? filter = freezed,
     Object? statesOrProcincesForFilter = freezed,
     Object? accountResult = freezed,
     Object? filteredResult = freezed,
@@ -1346,18 +1336,10 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.nameOrAccount
           : nameOrAccount // ignore: cast_nullable_to_non_nullable
               as String,
-      filterState: filterState == freezed
-          ? _value.filterState
-          : filterState // ignore: cast_nullable_to_non_nullable
-              as String?,
-      filterStateOrProvince: filterStateOrProvince == freezed
-          ? _value.filterStateOrProvince
-          : filterStateOrProvince // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statesForFilter: statesForFilter == freezed
-          ? _value.statesForFilter
-          : statesForFilter // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      filter: filter == freezed
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as AccountFilter?,
       statesOrProcincesForFilter: statesOrProcincesForFilter == freezed
           ? _value.statesOrProcincesForFilter
           : statesOrProcincesForFilter // ignore: cast_nullable_to_non_nullable
@@ -1385,9 +1367,7 @@ abstract class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       bool filtered,
       bool listView,
       String nameOrAccount,
-      String? filterState,
-      String? filterStateOrProvince,
-      List<String> statesForFilter,
+      AccountFilter? filter,
       List<String> statesOrProcincesForFilter,
       Either<DataFailure, List<Account>> accountResult,
       Either<DataFailure, List<Account>> filteredResult});
@@ -1408,9 +1388,7 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     Object? filtered = freezed,
     Object? listView = freezed,
     Object? nameOrAccount = freezed,
-    Object? filterState = freezed,
-    Object? filterStateOrProvince = freezed,
-    Object? statesForFilter = freezed,
+    Object? filter = freezed,
     Object? statesOrProcincesForFilter = freezed,
     Object? accountResult = freezed,
     Object? filteredResult = freezed,
@@ -1432,18 +1410,10 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value.nameOrAccount
           : nameOrAccount // ignore: cast_nullable_to_non_nullable
               as String,
-      filterState: filterState == freezed
-          ? _value.filterState
-          : filterState // ignore: cast_nullable_to_non_nullable
-              as String?,
-      filterStateOrProvince: filterStateOrProvince == freezed
-          ? _value.filterStateOrProvince
-          : filterStateOrProvince // ignore: cast_nullable_to_non_nullable
-              as String?,
-      statesForFilter: statesForFilter == freezed
-          ? _value.statesForFilter
-          : statesForFilter // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      filter: filter == freezed
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as AccountFilter?,
       statesOrProcincesForFilter: statesOrProcincesForFilter == freezed
           ? _value.statesOrProcincesForFilter
           : statesOrProcincesForFilter // ignore: cast_nullable_to_non_nullable
@@ -1468,9 +1438,7 @@ class _$_HomeState implements _HomeState {
       required this.filtered,
       required this.listView,
       required this.nameOrAccount,
-      required this.filterState,
-      required this.filterStateOrProvince,
-      required this.statesForFilter,
+      required this.filter,
       required this.statesOrProcincesForFilter,
       required this.accountResult,
       required this.filteredResult});
@@ -1484,11 +1452,7 @@ class _$_HomeState implements _HomeState {
   @override
   final String nameOrAccount;
   @override
-  final String? filterState;
-  @override
-  final String? filterStateOrProvince;
-  @override
-  final List<String> statesForFilter;
+  final AccountFilter? filter;
   @override
   final List<String> statesOrProcincesForFilter;
   @override
@@ -1498,7 +1462,7 @@ class _$_HomeState implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, filtered: $filtered, listView: $listView, nameOrAccount: $nameOrAccount, filterState: $filterState, filterStateOrProvince: $filterStateOrProvince, statesForFilter: $statesForFilter, statesOrProcincesForFilter: $statesOrProcincesForFilter, accountResult: $accountResult, filteredResult: $filteredResult)';
+    return 'HomeState(isLoading: $isLoading, filtered: $filtered, listView: $listView, nameOrAccount: $nameOrAccount, filter: $filter, statesOrProcincesForFilter: $statesOrProcincesForFilter, accountResult: $accountResult, filteredResult: $filteredResult)';
   }
 
   @override
@@ -1514,12 +1478,7 @@ class _$_HomeState implements _HomeState {
                 other.listView == listView) &&
             (identical(other.nameOrAccount, nameOrAccount) ||
                 other.nameOrAccount == nameOrAccount) &&
-            (identical(other.filterState, filterState) ||
-                other.filterState == filterState) &&
-            (identical(other.filterStateOrProvince, filterStateOrProvince) ||
-                other.filterStateOrProvince == filterStateOrProvince) &&
-            const DeepCollectionEquality()
-                .equals(other.statesForFilter, statesForFilter) &&
+            (identical(other.filter, filter) || other.filter == filter) &&
             const DeepCollectionEquality().equals(
                 other.statesOrProcincesForFilter, statesOrProcincesForFilter) &&
             (identical(other.accountResult, accountResult) ||
@@ -1535,9 +1494,7 @@ class _$_HomeState implements _HomeState {
       filtered,
       listView,
       nameOrAccount,
-      filterState,
-      filterStateOrProvince,
-      const DeepCollectionEquality().hash(statesForFilter),
+      filter,
       const DeepCollectionEquality().hash(statesOrProcincesForFilter),
       accountResult,
       filteredResult);
@@ -1554,9 +1511,7 @@ abstract class _HomeState implements HomeState {
           required bool filtered,
           required bool listView,
           required String nameOrAccount,
-          required String? filterState,
-          required String? filterStateOrProvince,
-          required List<String> statesForFilter,
+          required AccountFilter? filter,
           required List<String> statesOrProcincesForFilter,
           required Either<DataFailure, List<Account>> accountResult,
           required Either<DataFailure, List<Account>> filteredResult}) =
@@ -1571,11 +1526,7 @@ abstract class _HomeState implements HomeState {
   @override
   String get nameOrAccount;
   @override
-  String? get filterState;
-  @override
-  String? get filterStateOrProvince;
-  @override
-  List<String> get statesForFilter;
+  AccountFilter? get filter;
   @override
   List<String> get statesOrProcincesForFilter;
   @override

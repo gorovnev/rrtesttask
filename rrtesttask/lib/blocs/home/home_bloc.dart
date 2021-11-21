@@ -5,11 +5,15 @@ import 'package:dartz/dartz.dart';
 import 'package:rrtesttask/domain/account.dart';
 import 'package:rrtesttask/domain/account_repository.dart';
 import 'package:rrtesttask/domain/data_failure.dart';
-import 'package:async/async.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 part 'home_bloc.freezed.dart';
+
+class AccountFilter {
+  bool? active;
+  String? stateOrProvince;
+}
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IAccountRepository _accountRepository;
@@ -18,13 +22,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<StartedEvent>(_onStartedEvent);
     on<SearchEvent>(_onSearchEvent);
     on<SwitchView>(_onSwitchViewEvent);
-    on<FilterByState>(_onFilterByStateEvent);
+    on<FilterByStatus>(_onFilterByStatusEvent);
     on<FilterByStateOrProvince>(_onFilterByStateOrProvinceEvent);
     on<ClearFilter>(_onClearFilterEvent);
   }
 
   void _onStartedEvent(StartedEvent event, Emitter<HomeState> emit) async {
-    await _getAccounts("", emit);
+    // await _getAccounts("", emit);
   }
 
   void _onSearchEvent(SearchEvent event, Emitter<HomeState> emit) async {
@@ -42,15 +46,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         ? await _accountRepository.getAll()
         : await _accountRepository.searchByAccountOrName(pattern);
 
-    List<String> statesFilter = [];
     List<String> provincesFilter = [];
     res.fold(
       (_) => null,
       (list) {
         for (var item in list) {
-          if (!statesFilter.contains(item.stateCode)) {
-            statesFilter.add(item.stateCode);
-          }
           if (!provincesFilter.contains(item.stateOrProvince)) {
             provincesFilter.add(item.stateOrProvince);
           }
@@ -62,51 +62,72 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       nameOrAccount: pattern,
       accountResult: res,
       filteredResult: res,
-      statesForFilter: statesFilter,
-      filterState: null,
-      filterStateOrProvince: null,
+      filter: null,
       filtered: false,
       statesOrProcincesForFilter: provincesFilter,
       isLoading: false,
     ));
   }
 
-  void _onFilterByStateEvent(
-      FilterByState event, Emitter<HomeState> emit) async {
-    final Either<DataFailure, List<Account>> res = state.accountResult.fold(
+  Either<DataFailure, List<Account>> _filterFunction(
+    Either<DataFailure, List<Account>> accountResult,
+    AccountFilter filter,
+  ) {
+    return accountResult.fold(
       (err) => left(err),
-      (list) => right(
-          list.where((element) => element.stateCode == event.state).toList()),
+      (list) {
+        final list1 = filter.active == null
+            ? list
+            : list
+                .where((element) => element.isInative == filter.active)
+                .toList();
+        final list2 = filter.stateOrProvince == null
+            ? list1
+            : list1
+                .where((element) =>
+                    element.stateOrProvince == filter.stateOrProvince)
+                .toList();
+        return right(list2);
+      },
     );
+  }
+
+  void _onFilterByStatusEvent(
+      FilterByStatus event, Emitter<HomeState> emit) async {
+    AccountFilter? filter = state.filter;
+    filter ??= AccountFilter();
+    filter.active = event.active;
+
+    final Either<DataFailure, List<Account>> res =
+        _filterFunction(state.accountResult, filter);
+
     emit(state.copyWith(
       filteredResult: res,
       filtered: true,
-      filterStateOrProvince: null,
-      filterState: event.state,
+      filter: filter,
     ));
   }
 
   void _onFilterByStateOrProvinceEvent(
       FilterByStateOrProvince event, Emitter<HomeState> emit) async {
-    final Either<DataFailure, List<Account>> res = state.accountResult.fold(
-      (err) => left(err),
-      (list) => right(list
-          .where((element) => element.stateOrProvince == event.stateOrProvince)
-          .toList()),
-    );
+    AccountFilter? filter = state.filter;
+    filter ??= AccountFilter();
+    filter.stateOrProvince = event.stateOrProvince;
+
+    final Either<DataFailure, List<Account>> res =
+        _filterFunction(state.accountResult, filter);
+
     emit(state.copyWith(
       filteredResult: res,
       filtered: true,
-      filterState: null,
-      filterStateOrProvince: event.stateOrProvince,
+      filter: filter,
     ));
   }
 
   void _onClearFilterEvent(ClearFilter event, Emitter<HomeState> emit) async {
     emit(state.copyWith(
       filtered: false,
-      filterState: null,
-      filterStateOrProvince: null,
+      filter: null,
       filteredResult: state.accountResult,
     ));
   }

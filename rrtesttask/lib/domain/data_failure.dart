@@ -13,7 +13,7 @@ abstract class DataFailure with _$DataFailure {
 extension DataFailureExt on DataFailure {
   String getMessage() {
     return maybeMap(
-      noData: (_) => "No data available!",
+      noData: (_) => "Try to search (empty search will return all records)",
       orElse: () => "An error",
     );
   }

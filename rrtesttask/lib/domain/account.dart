@@ -8,7 +8,7 @@ abstract class Account with _$Account {
     required String imageUrl,
     required String name,
     required String accountNumber,
-    required String stateCode,
+    required bool isInative,
     required String stateOrProvince,
   }) = _Account;
 }
