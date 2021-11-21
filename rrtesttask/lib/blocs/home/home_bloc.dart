@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dartz/dartz.dart';
 import 'package:rrtesttask/domain/account.dart';
 import 'package:rrtesttask/domain/account_repository.dart';
+import 'package:rrtesttask/domain/auth_facade.dart';
 import 'package:rrtesttask/domain/data_failure.dart';
 
 part 'home_event.dart';
@@ -17,14 +18,16 @@ class AccountFilter {
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IAccountRepository _accountRepository;
+  final IAuthFacade _auth;
 
-  HomeBloc(this._accountRepository) : super(HomeState.initial()) {
+  HomeBloc(this._accountRepository, this._auth) : super(HomeState.initial()) {
     on<StartedEvent>(_onStartedEvent);
     on<SearchEvent>(_onSearchEvent);
     on<SwitchView>(_onSwitchViewEvent);
     on<FilterByStatus>(_onFilterByStatusEvent);
     on<FilterByStateOrProvince>(_onFilterByStateOrProvinceEvent);
     on<ClearFilter>(_onClearFilterEvent);
+    on<Authenticate>(_onAuthenticateEvent);
   }
 
   void _onStartedEvent(StartedEvent event, Emitter<HomeState> emit) async {
@@ -129,6 +132,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       filtered: false,
       filter: null,
       filteredResult: state.accountResult,
+    ));
+  }
+
+  void _onAuthenticateEvent(Authenticate event, Emitter<HomeState> emit) async {
+    await _auth.login();
+    emit(state.copyWith(
+      isAuthenticated: _auth.isLoggedIn,
     ));
   }
 }

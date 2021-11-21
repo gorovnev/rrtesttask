@@ -5,10 +5,6 @@ import 'package:rrtesttask/domain/account.dart';
 import 'package:rrtesttask/injection_container.dart';
 import 'package:rrtesttask/domain/data_failure.dart';
 
-import 'package:flutter_aad_oauth/flutter_aad_oauth.dart';
-import 'package:flutter_aad_oauth/model/config.dart';
-import 'package:keyboard_actions/external/platform_check/platform_check.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -59,84 +55,6 @@ class _ControlWidgetState extends State<ControlWidget> {
   final TextEditingController _searchController = TextEditingController();
   bool showFilter = false;
   bool? accountStatus;
-  static const String TENANT_ID = "eba4ddbc-19d5-47ec-bf7b-916bf792ad71";
-  static const String CLIENT_ID = "5e2f14a3-0f4e-40e6-b621-086c764565e9";
-
-  late Config config;
-  late FlutterAadOauth oauth = FlutterAadOauth(config);
-
-  @override
-  initState() {
-    var redirectUri;
-    late String scope;
-    late String responseType;
-
-    if (PlatformCheck.isWeb) {
-      scope = "openid profile email offline_access user.read";
-      responseType = "id_token+token";
-      final currentUri = Uri.base;
-      redirectUri = Uri(
-        host: currentUri.host,
-        scheme: currentUri.scheme,
-        port: currentUri.port,
-        path: '/authRedirect.html',
-      );
-    } else {
-      scope = "openid profile offline_access";
-      responseType = "code";
-      redirectUri = "https://login.live.com/oauth20_desktop.srf";
-    }
-
-    config = Config(
-        azureTennantId: TENANT_ID,
-        clientId: CLIENT_ID,
-        scope: scope,
-        redirectUri: "$redirectUri",
-        responseType: responseType);
-
-    oauth = FlutterAadOauth(config);
-    oauth.setContext(context);
-    checkIsLogged();
-    super.initState();
-  }
-
-  void showError(dynamic ex) {
-    showMessage(ex.toString());
-  }
-
-  void showMessage(String text) {
-    var alert = AlertDialog(content: Text(text), actions: <Widget>[
-      ElevatedButton(
-          child: const Text("Ok"),
-          onPressed: () {
-            Navigator.pop(context);
-          })
-    ]);
-    showDialog(context: context, builder: (BuildContext context) => alert);
-  }
-
-  void checkIsLogged() async {
-    if (await oauth.tokenIsValid()) {
-      String? accessToken = await oauth.getAccessToken();
-      showMessage("Access token: $accessToken");
-    }
-  }
-
-  void login() async {
-    try {
-      await oauth.login();
-      String? accessToken = await oauth.getAccessToken();
-      showMessage("Logged in successfully, your access token: $accessToken");
-      print("Logged in successfully, your access token:\n$accessToken");
-    } catch (e) {
-      showError(e);
-    }
-  }
-
-  void logout() async {
-    await oauth.logout();
-    showMessage("Logged out");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,29 +64,6 @@ class _ControlWidgetState extends State<ControlWidget> {
           children: [
             Row(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    login();
-                  },
-                  child: Row(
-                    children: const [
-                      Icon(Icons.launch),
-                      Text('Login'),
-                    ],
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    logout();
-                  },
-                  child: Row(
-                    children: const [
-                      Icon(Icons.delete),
-                      Text('Logout'),
-                    ],
-                  ),
-                ),
-                //
                 Expanded(
                   child: TextFormField(
                     decoration: InputDecoration(
@@ -184,7 +79,8 @@ class _ControlWidgetState extends State<ControlWidget> {
                       labelText: "Search",
                     ),
                     onChanged: (value) {},
-                    onEditingComplete: () {
+                    onEditingComplete: () async {
+                      if (!state.isAuthenticated) return;
                       BlocProvider.of<HomeBloc>(context)
                           .add(HomeEvent.search(_searchController.text));
                     },
@@ -301,6 +197,21 @@ class AccountsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
+        if (!state.isAuthenticated) {
+          return Column(
+            children: [
+              const Text("For searching you need to be authenticated."),
+              TextButton(
+                onPressed: () {
+                  BlocProvider.of<HomeBloc>(context).add(
+                    const HomeEvent.authenticate(),
+                  );
+                },
+                child: const Text("Login"),
+              )
+            ],
+          );
+        }
         return state.filteredResult.fold(
           (err) => Text(err.getMessage()),
           (list) {

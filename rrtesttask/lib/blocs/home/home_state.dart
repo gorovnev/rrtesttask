@@ -1,14 +1,10 @@
 part of 'home_bloc.dart';
 
-// @immutable
-// abstract class HomeState {}
-
-// class HomeInitial extends HomeState {}
-
 @freezed
 class HomeState with _$HomeState {
   const factory HomeState({
     required bool isLoading,
+    required bool isAuthenticated,
     required bool filtered,
     required bool listView,
     required String nameOrAccount,
@@ -21,6 +17,7 @@ class HomeState with _$HomeState {
   factory HomeState.initial() => HomeState(
         isLoading: false,
         filtered: false,
+        isAuthenticated: false,
         listView: true,
         nameOrAccount: "",
         filter: null,

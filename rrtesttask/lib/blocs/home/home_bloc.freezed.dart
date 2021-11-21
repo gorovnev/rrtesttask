@@ -27,12 +27,6 @@ class _$HomeEventTearOff {
     );
   }
 
-  SearchInLoaded searchInLoaded(String accountOrName) {
-    return SearchInLoaded(
-      accountOrName,
-    );
-  }
-
   SwitchView switchView(bool view) {
     return SwitchView(
       view,
@@ -54,6 +48,10 @@ class _$HomeEventTearOff {
   ClearFilter clearFilter() {
     return const ClearFilter();
   }
+
+  Authenticate authenticate() {
+    return const Authenticate();
+  }
 }
 
 /// @nodoc
@@ -65,33 +63,33 @@ mixin _$HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
     required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
+    required TResult Function() authenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -99,34 +97,34 @@ mixin _$HomeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(StartedEvent value) started,
     required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
     required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,11 +187,11 @@ class _$StartedEvent implements StartedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
     required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
+    required TResult Function() authenticate,
   }) {
     return started();
   }
@@ -203,11 +201,11 @@ class _$StartedEvent implements StartedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
   }) {
     return started?.call();
   }
@@ -217,11 +215,11 @@ class _$StartedEvent implements StartedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -235,12 +233,12 @@ class _$StartedEvent implements StartedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(StartedEvent value) started,
     required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
     required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
   }) {
     return started(this);
   }
@@ -250,11 +248,11 @@ class _$StartedEvent implements StartedEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
   }) {
     return started?.call(this);
   }
@@ -264,11 +262,11 @@ class _$StartedEvent implements StartedEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -348,11 +346,11 @@ class _$SearchEvent implements SearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
     required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
+    required TResult Function() authenticate,
   }) {
     return search(accountOrName);
   }
@@ -362,11 +360,11 @@ class _$SearchEvent implements SearchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
   }) {
     return search?.call(accountOrName);
   }
@@ -376,11 +374,11 @@ class _$SearchEvent implements SearchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -394,12 +392,12 @@ class _$SearchEvent implements SearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(StartedEvent value) started,
     required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
     required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
   }) {
     return search(this);
   }
@@ -409,11 +407,11 @@ class _$SearchEvent implements SearchEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
   }) {
     return search?.call(this);
   }
@@ -423,11 +421,11 @@ class _$SearchEvent implements SearchEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -443,170 +441,6 @@ abstract class SearchEvent implements HomeEvent {
   String get accountOrName;
   @JsonKey(ignore: true)
   $SearchEventCopyWith<SearchEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SearchInLoadedCopyWith<$Res> {
-  factory $SearchInLoadedCopyWith(
-          SearchInLoaded value, $Res Function(SearchInLoaded) then) =
-      _$SearchInLoadedCopyWithImpl<$Res>;
-  $Res call({String accountOrName});
-}
-
-/// @nodoc
-class _$SearchInLoadedCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
-    implements $SearchInLoadedCopyWith<$Res> {
-  _$SearchInLoadedCopyWithImpl(
-      SearchInLoaded _value, $Res Function(SearchInLoaded) _then)
-      : super(_value, (v) => _then(v as SearchInLoaded));
-
-  @override
-  SearchInLoaded get _value => super._value as SearchInLoaded;
-
-  @override
-  $Res call({
-    Object? accountOrName = freezed,
-  }) {
-    return _then(SearchInLoaded(
-      accountOrName == freezed
-          ? _value.accountOrName
-          : accountOrName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SearchInLoaded implements SearchInLoaded {
-  const _$SearchInLoaded(this.accountOrName);
-
-  @override
-  final String accountOrName;
-
-  @override
-  String toString() {
-    return 'HomeEvent.searchInLoaded(accountOrName: $accountOrName)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SearchInLoaded &&
-            (identical(other.accountOrName, accountOrName) ||
-                other.accountOrName == accountOrName));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, accountOrName);
-
-  @JsonKey(ignore: true)
-  @override
-  $SearchInLoadedCopyWith<SearchInLoaded> get copyWith =>
-      _$SearchInLoadedCopyWithImpl<SearchInLoaded>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
-    required TResult Function(bool view) switchView,
-    required TResult Function(bool? active) filterByStatus,
-    required TResult Function(String stateOrProvince) filterByStateOrProvince,
-    required TResult Function() clearFilter,
-  }) {
-    return searchInLoaded(accountOrName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
-    TResult Function(bool view)? switchView,
-    TResult Function(bool? active)? filterByStatus,
-    TResult Function(String stateOrProvince)? filterByStateOrProvince,
-    TResult Function()? clearFilter,
-  }) {
-    return searchInLoaded?.call(accountOrName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
-    TResult Function(bool view)? switchView,
-    TResult Function(bool? active)? filterByStatus,
-    TResult Function(String stateOrProvince)? filterByStateOrProvince,
-    TResult Function()? clearFilter,
-    required TResult orElse(),
-  }) {
-    if (searchInLoaded != null) {
-      return searchInLoaded(accountOrName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StartedEvent value) started,
-    required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
-    required TResult Function(SwitchView value) switchView,
-    required TResult Function(FilterByStatus value) filterByStatus,
-    required TResult Function(FilterByStateOrProvince value)
-        filterByStateOrProvince,
-    required TResult Function(ClearFilter value) clearFilter,
-  }) {
-    return searchInLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StartedEvent value)? started,
-    TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
-    TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByStatus value)? filterByStatus,
-    TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
-    TResult Function(ClearFilter value)? clearFilter,
-  }) {
-    return searchInLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StartedEvent value)? started,
-    TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
-    TResult Function(SwitchView value)? switchView,
-    TResult Function(FilterByStatus value)? filterByStatus,
-    TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
-    TResult Function(ClearFilter value)? clearFilter,
-    required TResult orElse(),
-  }) {
-    if (searchInLoaded != null) {
-      return searchInLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SearchInLoaded implements HomeEvent {
-  const factory SearchInLoaded(String accountOrName) = _$SearchInLoaded;
-
-  String get accountOrName;
-  @JsonKey(ignore: true)
-  $SearchInLoadedCopyWith<SearchInLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -674,11 +508,11 @@ class _$SwitchView implements SwitchView {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
     required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
+    required TResult Function() authenticate,
   }) {
     return switchView(view);
   }
@@ -688,11 +522,11 @@ class _$SwitchView implements SwitchView {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
   }) {
     return switchView?.call(view);
   }
@@ -702,11 +536,11 @@ class _$SwitchView implements SwitchView {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
     required TResult orElse(),
   }) {
     if (switchView != null) {
@@ -720,12 +554,12 @@ class _$SwitchView implements SwitchView {
   TResult map<TResult extends Object?>({
     required TResult Function(StartedEvent value) started,
     required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
     required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
   }) {
     return switchView(this);
   }
@@ -735,11 +569,11 @@ class _$SwitchView implements SwitchView {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
   }) {
     return switchView?.call(this);
   }
@@ -749,11 +583,11 @@ class _$SwitchView implements SwitchView {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
     required TResult orElse(),
   }) {
     if (switchView != null) {
@@ -837,11 +671,11 @@ class _$FilterByStatus implements FilterByStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
     required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
+    required TResult Function() authenticate,
   }) {
     return filterByStatus(active);
   }
@@ -851,11 +685,11 @@ class _$FilterByStatus implements FilterByStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
   }) {
     return filterByStatus?.call(active);
   }
@@ -865,11 +699,11 @@ class _$FilterByStatus implements FilterByStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
     required TResult orElse(),
   }) {
     if (filterByStatus != null) {
@@ -883,12 +717,12 @@ class _$FilterByStatus implements FilterByStatus {
   TResult map<TResult extends Object?>({
     required TResult Function(StartedEvent value) started,
     required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
     required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
   }) {
     return filterByStatus(this);
   }
@@ -898,11 +732,11 @@ class _$FilterByStatus implements FilterByStatus {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
   }) {
     return filterByStatus?.call(this);
   }
@@ -912,11 +746,11 @@ class _$FilterByStatus implements FilterByStatus {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
     required TResult orElse(),
   }) {
     if (filterByStatus != null) {
@@ -1003,11 +837,11 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
     required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
+    required TResult Function() authenticate,
   }) {
     return filterByStateOrProvince(stateOrProvince);
   }
@@ -1017,11 +851,11 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
   }) {
     return filterByStateOrProvince?.call(stateOrProvince);
   }
@@ -1031,11 +865,11 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
     required TResult orElse(),
   }) {
     if (filterByStateOrProvince != null) {
@@ -1049,12 +883,12 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
   TResult map<TResult extends Object?>({
     required TResult Function(StartedEvent value) started,
     required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
     required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
   }) {
     return filterByStateOrProvince(this);
   }
@@ -1064,11 +898,11 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
   }) {
     return filterByStateOrProvince?.call(this);
   }
@@ -1078,11 +912,11 @@ class _$FilterByStateOrProvince implements FilterByStateOrProvince {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
     required TResult orElse(),
   }) {
     if (filterByStateOrProvince != null) {
@@ -1144,11 +978,11 @@ class _$ClearFilter implements ClearFilter {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String accountOrName) search,
-    required TResult Function(String accountOrName) searchInLoaded,
     required TResult Function(bool view) switchView,
     required TResult Function(bool? active) filterByStatus,
     required TResult Function(String stateOrProvince) filterByStateOrProvince,
     required TResult Function() clearFilter,
+    required TResult Function() authenticate,
   }) {
     return clearFilter();
   }
@@ -1158,11 +992,11 @@ class _$ClearFilter implements ClearFilter {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
   }) {
     return clearFilter?.call();
   }
@@ -1172,11 +1006,11 @@ class _$ClearFilter implements ClearFilter {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String accountOrName)? search,
-    TResult Function(String accountOrName)? searchInLoaded,
     TResult Function(bool view)? switchView,
     TResult Function(bool? active)? filterByStatus,
     TResult Function(String stateOrProvince)? filterByStateOrProvince,
     TResult Function()? clearFilter,
+    TResult Function()? authenticate,
     required TResult orElse(),
   }) {
     if (clearFilter != null) {
@@ -1190,12 +1024,12 @@ class _$ClearFilter implements ClearFilter {
   TResult map<TResult extends Object?>({
     required TResult Function(StartedEvent value) started,
     required TResult Function(SearchEvent value) search,
-    required TResult Function(SearchInLoaded value) searchInLoaded,
     required TResult Function(SwitchView value) switchView,
     required TResult Function(FilterByStatus value) filterByStatus,
     required TResult Function(FilterByStateOrProvince value)
         filterByStateOrProvince,
     required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
   }) {
     return clearFilter(this);
   }
@@ -1205,11 +1039,11 @@ class _$ClearFilter implements ClearFilter {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
   }) {
     return clearFilter?.call(this);
   }
@@ -1219,11 +1053,11 @@ class _$ClearFilter implements ClearFilter {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StartedEvent value)? started,
     TResult Function(SearchEvent value)? search,
-    TResult Function(SearchInLoaded value)? searchInLoaded,
     TResult Function(SwitchView value)? switchView,
     TResult Function(FilterByStatus value)? filterByStatus,
     TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
     TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
     required TResult orElse(),
   }) {
     if (clearFilter != null) {
@@ -1238,11 +1072,147 @@ abstract class ClearFilter implements HomeEvent {
 }
 
 /// @nodoc
+abstract class $AuthenticateCopyWith<$Res> {
+  factory $AuthenticateCopyWith(
+          Authenticate value, $Res Function(Authenticate) then) =
+      _$AuthenticateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AuthenticateCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements $AuthenticateCopyWith<$Res> {
+  _$AuthenticateCopyWithImpl(
+      Authenticate _value, $Res Function(Authenticate) _then)
+      : super(_value, (v) => _then(v as Authenticate));
+
+  @override
+  Authenticate get _value => super._value as Authenticate;
+}
+
+/// @nodoc
+
+class _$Authenticate implements Authenticate {
+  const _$Authenticate();
+
+  @override
+  String toString() {
+    return 'HomeEvent.authenticate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Authenticate);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String accountOrName) search,
+    required TResult Function(bool view) switchView,
+    required TResult Function(bool? active) filterByStatus,
+    required TResult Function(String stateOrProvince) filterByStateOrProvince,
+    required TResult Function() clearFilter,
+    required TResult Function() authenticate,
+  }) {
+    return authenticate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String accountOrName)? search,
+    TResult Function(bool view)? switchView,
+    TResult Function(bool? active)? filterByStatus,
+    TResult Function(String stateOrProvince)? filterByStateOrProvince,
+    TResult Function()? clearFilter,
+    TResult Function()? authenticate,
+  }) {
+    return authenticate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String accountOrName)? search,
+    TResult Function(bool view)? switchView,
+    TResult Function(bool? active)? filterByStatus,
+    TResult Function(String stateOrProvince)? filterByStateOrProvince,
+    TResult Function()? clearFilter,
+    TResult Function()? authenticate,
+    required TResult orElse(),
+  }) {
+    if (authenticate != null) {
+      return authenticate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartedEvent value) started,
+    required TResult Function(SearchEvent value) search,
+    required TResult Function(SwitchView value) switchView,
+    required TResult Function(FilterByStatus value) filterByStatus,
+    required TResult Function(FilterByStateOrProvince value)
+        filterByStateOrProvince,
+    required TResult Function(ClearFilter value) clearFilter,
+    required TResult Function(Authenticate value) authenticate,
+  }) {
+    return authenticate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(StartedEvent value)? started,
+    TResult Function(SearchEvent value)? search,
+    TResult Function(SwitchView value)? switchView,
+    TResult Function(FilterByStatus value)? filterByStatus,
+    TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
+    TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
+  }) {
+    return authenticate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartedEvent value)? started,
+    TResult Function(SearchEvent value)? search,
+    TResult Function(SwitchView value)? switchView,
+    TResult Function(FilterByStatus value)? filterByStatus,
+    TResult Function(FilterByStateOrProvince value)? filterByStateOrProvince,
+    TResult Function(ClearFilter value)? clearFilter,
+    TResult Function(Authenticate value)? authenticate,
+    required TResult orElse(),
+  }) {
+    if (authenticate != null) {
+      return authenticate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Authenticate implements HomeEvent {
+  const factory Authenticate() = _$Authenticate;
+}
+
+/// @nodoc
 class _$HomeStateTearOff {
   const _$HomeStateTearOff();
 
   _HomeState call(
       {required bool isLoading,
+      required bool isAuthenticated,
       required bool filtered,
       required bool listView,
       required String nameOrAccount,
@@ -1252,6 +1222,7 @@ class _$HomeStateTearOff {
       required Either<DataFailure, List<Account>> filteredResult}) {
     return _HomeState(
       isLoading: isLoading,
+      isAuthenticated: isAuthenticated,
       filtered: filtered,
       listView: listView,
       nameOrAccount: nameOrAccount,
@@ -1269,6 +1240,7 @@ const $HomeState = _$HomeStateTearOff();
 /// @nodoc
 mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isAuthenticated => throw _privateConstructorUsedError;
   bool get filtered => throw _privateConstructorUsedError;
   bool get listView => throw _privateConstructorUsedError;
   String get nameOrAccount => throw _privateConstructorUsedError;
@@ -1291,6 +1263,7 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
+      bool isAuthenticated,
       bool filtered,
       bool listView,
       String nameOrAccount,
@@ -1311,6 +1284,7 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isAuthenticated = freezed,
     Object? filtered = freezed,
     Object? listView = freezed,
     Object? nameOrAccount = freezed,
@@ -1323,6 +1297,10 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAuthenticated: isAuthenticated == freezed
+          ? _value.isAuthenticated
+          : isAuthenticated // ignore: cast_nullable_to_non_nullable
               as bool,
       filtered: filtered == freezed
           ? _value.filtered
@@ -1364,6 +1342,7 @@ abstract class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $Res call(
       {bool isLoading,
+      bool isAuthenticated,
       bool filtered,
       bool listView,
       String nameOrAccount,
@@ -1385,6 +1364,7 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isAuthenticated = freezed,
     Object? filtered = freezed,
     Object? listView = freezed,
     Object? nameOrAccount = freezed,
@@ -1397,6 +1377,10 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAuthenticated: isAuthenticated == freezed
+          ? _value.isAuthenticated
+          : isAuthenticated // ignore: cast_nullable_to_non_nullable
               as bool,
       filtered: filtered == freezed
           ? _value.filtered
@@ -1435,6 +1419,7 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 class _$_HomeState implements _HomeState {
   const _$_HomeState(
       {required this.isLoading,
+      required this.isAuthenticated,
       required this.filtered,
       required this.listView,
       required this.nameOrAccount,
@@ -1445,6 +1430,8 @@ class _$_HomeState implements _HomeState {
 
   @override
   final bool isLoading;
+  @override
+  final bool isAuthenticated;
   @override
   final bool filtered;
   @override
@@ -1462,7 +1449,7 @@ class _$_HomeState implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(isLoading: $isLoading, filtered: $filtered, listView: $listView, nameOrAccount: $nameOrAccount, filter: $filter, statesOrProcincesForFilter: $statesOrProcincesForFilter, accountResult: $accountResult, filteredResult: $filteredResult)';
+    return 'HomeState(isLoading: $isLoading, isAuthenticated: $isAuthenticated, filtered: $filtered, listView: $listView, nameOrAccount: $nameOrAccount, filter: $filter, statesOrProcincesForFilter: $statesOrProcincesForFilter, accountResult: $accountResult, filteredResult: $filteredResult)';
   }
 
   @override
@@ -1472,6 +1459,8 @@ class _$_HomeState implements _HomeState {
             other is _HomeState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isAuthenticated, isAuthenticated) ||
+                other.isAuthenticated == isAuthenticated) &&
             (identical(other.filtered, filtered) ||
                 other.filtered == filtered) &&
             (identical(other.listView, listView) ||
@@ -1491,6 +1480,7 @@ class _$_HomeState implements _HomeState {
   int get hashCode => Object.hash(
       runtimeType,
       isLoading,
+      isAuthenticated,
       filtered,
       listView,
       nameOrAccount,
@@ -1508,6 +1498,7 @@ class _$_HomeState implements _HomeState {
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
           {required bool isLoading,
+          required bool isAuthenticated,
           required bool filtered,
           required bool listView,
           required String nameOrAccount,
@@ -1519,6 +1510,8 @@ abstract class _HomeState implements HomeState {
 
   @override
   bool get isLoading;
+  @override
+  bool get isAuthenticated;
   @override
   bool get filtered;
   @override
