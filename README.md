@@ -37,3 +37,12 @@ docker build -t webserver .
 ```
 docker run -it --rm -d -p 3000:80 --name web webserver
 ```
+
+6. The app URL is http://localhost:3000
+
+## Running application from Docker Hub image
+
+```
+docker pull ggadev/rrtesttask
+docker run -it --rm -d -p 3000:80 --name web ggadev/rrtesttask
+```
